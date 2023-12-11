@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
+#include <string.h>
 
 float mediaAluno(float notas[])
 {
@@ -14,18 +15,19 @@ float mediaAluno(float notas[])
     return media;
 }
 
-void verificacao(int aprovacao)
+char* verificacao( float media)
 {
-    float media;
+   char resultado [200];
 
-    if (media > 7)
+    if (media >= 7)
     {
-        printf("Aprovado");
+       strcpy(resultado, "Aprovado");
     }
     else
     {
-        printf("Reprovado");
-    }
+        strcpy(resultado,"Reprovado");
+    }   
+	return resultado;
 }
 
 int main()
@@ -44,6 +46,6 @@ int main()
     media = mediaAluno(notas);
 
     printf("\nMEDIA: %.1f\n", media);
-    verificacao(aprovacao);
+    printf ("Resultado: %s\n", verificacao(media));
     return 0;
 }
