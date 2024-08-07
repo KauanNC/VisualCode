@@ -1,39 +1,30 @@
 #include <stdio.h>
 
 int main() {
-    char resposta1, resposta2, resposta3;
+	char resposta1, resposta2, resposta3;
 
-    // Pergunta 1
-    printf("Material imprescritível para empresa? (s/n): ");
-    scanf(" %c", &resposta1);
+	printf("Material imprescritivel para empresa? (s/n): ");
+	scanf(" %c", &resposta1);
+	printf("Material de linha de frente? (s/n): ");
+	scanf(" %c", &resposta2);
+	printf("Possui material similar? (s/n): ");
+	scanf(" %c", &resposta3);
 
-    // Pergunta 2
-    printf("Material de linha de frente? (s/n): ");
-    scanf(" %c", &resposta2);
 
-    // Pergunta 3 (só é perguntada se resposta1 for 's')
-    if (resposta1 == 's') {
-        printf("Possui material similar? (s/n): ");
-        scanf(" %c", &resposta3);
-    }
+	// Logica de deciscao
+	if (resposta1 == 's' && resposta2 == 's' && resposta3 == 's') {
+		printf("Recomendacao de material: y\n");
+	} else if (resposta1 == 's' && resposta2 == 's' && resposta3 == 'n') {
+		printf("Recomendacao de material: z\n");
+	} else if (resposta1 == 's' && resposta2 == 'n' && resposta3 == 'n') {
+		printf("Recomendacao de material: x\n");
+	} else if (resposta1 == 'n' && resposta2 == 's' && resposta3 == 's') {
+		printf("Recomendacao de material: x\n");
+	} else if (resposta1 == 'n' && resposta2 == 's' && resposta3 == 'n') {
+		printf("Recomendacao de material: x\n");
+	} else if (resposta1 == 'n' && resposta2 == 'n' && resposta3 == 'n') {
+		printf("Recomendacao de material: x\n");
+	}
 
-    // Lógica de decisão
-    if (resposta1 == 's' && resposta2 == 's' && resposta3 == 's') {
-        printf("Recomendação de material: y\n");
-    } else if (resposta1 == 's' && resposta2 == 's' && resposta3 == 'n') {
-        printf("Recomendação de material: z\n");
-    } else if (resposta1 == 's' && resposta2 == 'n') {
-        printf("Recomendação de material: x\n");
-    } else if (resposta1 == 'n' && resposta2 == 's' && resposta3 == 's') {
-        printf("Recomendação de material: y\n");
-    } else if (resposta1 == 'n' && resposta2 == 's' && resposta3 == 'n') {
-        printf("Recomendação de material: z\n");
-    } else if (resposta1 == 'n' && resposta2 == 'n') {
-        printf("Recomendação de material: x\n");
-    } else {
-        printf("Opção inválida ou combinação não prevista.\n");
-    }
-
-    return 0;
+	return 0;
 }
-
