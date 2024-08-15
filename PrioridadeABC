@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+int main() {
+    char *materiais[] = {"X-01", "X-02", "X-03", "X-04", "X-05", "X-06", "X-07", "X-08", "X-09", "X-10"};
+    double preco[] = {7.50, 16.00, 3.50, 0.15, 0.20, 0.90, 0.80, 9.00, 1.50, 0.60};
+    double consumo_anual[] = {500, 100, 5000, 20000, 10000, 1000, 100, 90, 100, 60};
+    double valor_consumo_anual[10];
+    double total_consumo_anual = 175500;
+    double valor_somado = 0;
+
+    for (int i = 0; i < 10; i++) {
+        valor_consumo_anual[i] = preco[i] * consumo_anual[i];
+        valor_somado += valor_consumo_anual[i];
+    }
+
+    printf("Tabela 1:\n");
+    printf("Material  | Preco  | Consumo Anual | Valor do Consumo Anual\n");
+    for (int i = 0; i < 10; i++) {
+        printf("%s      | %.2f  | %.0f           | %.2f\n", materiais[i], preco[i], consumo_anual[i], valor_consumo_anual[i]);
+    }
+
+    printf("\nTabela Mestra:\n");
+    printf("Material  | Valor do Consumo Anual | Valor em Relacao ao Total | Valor em Porcentagem | Classificacao\n");
+    valor_somado = 0;
+    for (int i = 0; i < 10; i++) {
+        valor_somado += valor_consumo_anual[i];
+        double percentual = (valor_somado / total_consumo_anual) * 100;
+        char classificacao = (percentual <= 70) ? 'A' : (percentual <= 95) ? 'B' : 'C';
+        printf("%s      | %.2f               | %.2f                 | %.2f%%          | %c\n", 
+               materiais[i], valor_consumo_anual[i], valor_somado, percentual, classificacao);
+    }
+
+    return 0;
+}
